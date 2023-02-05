@@ -1,0 +1,31 @@
+## Configuration for the from Snakemake workflow.
+
+# sample name, pointing to STARsolo output directory (same as the ""--outFileNamePrefix" input for STAR)
+#TODO: add sample_sheet read-ins as an option for passing sample lists
+Samples:
+  sample_A:
+  sample_B:
+
+# .fasta (genome sequence) and .gtf (gene annotations) files used to build STAR reference
+## Mouse
+GENOME_FASTA: /path/to/GENCODE_M28/GRCm39.genome.fa
+GENES_GTF: /path/to/GENCODE_M28/gencode.vM28.chr_patch_hapl_scaff.annotation.gtf
+
+# directory where STARsolo outputs are stored - be sure to use an absolute path (starting with root)
+DATADIR: /path/to/STARsolo_outputs/
+
+# directory for temporary files
+TMPDIR: ./tmp
+
+########################################################################################################
+# Executables - file paths
+########################################################################################################
+PICARD: /path/to/miniconda3/envs/scTAR1.2/share/picard-2.18.29-0/picard.jar
+DROPSEQ: /path/to/miniconda3/envs/scTAR1.2/share/dropseq_tools-2.4.0-1
+GTFTOGENEPRED: /path/to/miniconda3/envs/scTAR1.2/bin/gtfToGenePred # used to convert gtf to reFflat format, not needed if annotation is in reFflat
+BLASTDB: /shared_data/genome_db/BLAST_NCBI # path to where the nt BLAST database is stored
+
+CORES: 12 # how many cores to give for each process (snakemake automatically parallelizes process using "snakemake -j {numTotalCores}")
+
+MERGEBP: 500 #default 500 (Note- window size across genome is 50bp)
+THRESH: 10000000 #default 10000000

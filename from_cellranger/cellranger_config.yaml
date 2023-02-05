@@ -1,0 +1,24 @@
+## Configuration for the from_cellranger Snakemake workflow.
+
+# sample name, pointing to cellranger count output directory (same as the ""--id" input for cellranger count)
+Samples:
+    x1_mussel: 
+
+
+CR_REF: /RAID_32T/fbh/Agl/MusselBathymodiolusPlatifrons/reference_genome/x1_mussel
+
+DATADIR: /RAID_32T/fbh/Agl/Miscellaneous/debug_tarseq/CR # directory where cellranger_count outputs are stored - be sure to use an absolute path (starting with root)
+TMPDIR: /RAID_32T/fbh/Agl/Miscellaneous/debug_tarseq/tmp  # directory for temporary files
+
+########################################################################################################
+# Executables - file paths
+########################################################################################################
+PICARD: /RAID_32T/fbh/tools/miniconda3/share/picard-2.18.29-0/picard.jar
+DROPSEQ: /RAID_32T/fbh/tools/miniconda3/share/dropseq_tools-2.5.1-0
+GTFTOGENEPRED: /RAID_32T/fbh/tools/miniconda3/bin/gtfToGenePred
+BLASTDB: /RAID_32T/fbh/NRT_DB/nt
+
+CORES: 10 # how many cores to give for each process (snakemake automatically parallelizes process using "snakemake -j {numTotalCores}")
+
+MERGEBP: 500
+THRESH: 10000000
